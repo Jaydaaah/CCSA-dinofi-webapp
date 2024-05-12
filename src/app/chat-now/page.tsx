@@ -3,6 +3,7 @@
 import ChatFeed from "@/components/ChatFeed";
 import PromptArea from "@/components/PrompArea";
 import { MessagesProvider } from "@/contexts/Messages";
+import { StreamingMsgProvider } from "@/contexts/StreamMsg";
 import { RetrieveMsg } from "@/lib/api_calls";
 import { NextPage } from "next";
 import { cookies } from "next/headers";
@@ -17,10 +18,12 @@ const ChatNowPage: NextPage = async () => {
 
     return (
         <>
-            <div className="max-w-[50em] min-w-[30em] px-2 py-[4px] ml-[10vw] mr-[80px] bg-white">
-                <MessagesProvider datas={data}>
-                    <ChatFeed />
-                    <PromptArea />
+            <div className="max-w-[54em] min-w-[30em] px-2 py-[4px] ml-[10vw] mr-[80px] bg-white">
+                <MessagesProvider datas={data?.reverse()}>
+                    <StreamingMsgProvider>
+                        <ChatFeed />
+                        <PromptArea />
+                    </StreamingMsgProvider>
                 </MessagesProvider>
             </div>
         </>

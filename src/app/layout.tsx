@@ -27,9 +27,9 @@ const RootLayout: NextPage<Props> = ({ children }) => {
     return (
         <html lang="en">
             <body
-                className={`${font.className} pt-[68px] h-[100vh] bg-slate-100 bg-opacity-50`}
+                className={`${font.className} pt-[68px] h-[100vh] bg-slate-50 bg-opacity-50`}
             >
-                <header className="fixed top-0 w-full py-3 px-3 shadow-lg rounded-b-md bg-white">
+                <header className="fixed top-0 w-full py-3 px-3 shadow-sm rounded-b-md bg-white">
                     <nav className="flex justify-end">
                         <h1 className="flex-grow font-bold text-3xl content-center px-3 z-[1]">
                             <Link href={"/"}>Dino-Fi bot</Link>

@@ -1,7 +1,9 @@
 "use server";
 
-import { SendMsg } from "@/lib/api_calls";
-import { revalidatePath } from "next/cache";
+"no use";
+
+import { SendMsgStream } from "@/lib/api_calls";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 const SendPromptFromFormHandler = async (formdata: FormData) => {
@@ -9,12 +11,12 @@ const SendPromptFromFormHandler = async (formdata: FormData) => {
     const user_id = cookies().get("user_id")?.value;
     if (user_id && prompt) {
         try {
-            return SendMsg(user_id, prompt);
+            return { prompt, MsgStream: SendMsgStream(user_id, prompt) };
         } finally {
-            revalidatePath("/chat-now");
+            revalidateTag("conversation");
         }
     }
-    return null;
+    return { prompt, MsgStream: null };
 };
 
 export { SendPromptFromFormHandler };

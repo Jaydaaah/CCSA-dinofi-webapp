@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "axios";
 import {
     createContext,
     useCallback,
@@ -15,6 +14,18 @@ export interface Message {
     isright: boolean;
     timestamp: number;
 }
+export const defineNewMessage = (
+    text: string,
+    isright: boolean,
+    timestamp: number
+) => {
+    const new_msg: Message = {
+        text,
+        isright,
+        timestamp,
+    };
+    return new_msg;
+};
 
 const emptyMessages: Message[] = [];
 
@@ -29,14 +40,14 @@ interface Props {
 }
 
 const MessagesProvider: React.FC<Props> = ({ datas, children }) => {
-    const [optiMessages, addMessages] = useOptimistic<Message[], Message>(
+    const [optiMessages, addOptiMessages] = useOptimistic<Message[], Message>(
         datas ?? emptyMessages,
-        (state, newMsg) => [...state, newMsg]
+        (state, newMsg) => [newMsg, ...state]
     );
 
     return (
         <MessagesContext.Provider value={optiMessages}>
-            <setMessagesContext.Provider value={addMessages}>
+            <setMessagesContext.Provider value={addOptiMessages}>
                 {children}
             </setMessagesContext.Provider>
         </MessagesContext.Provider>
@@ -51,11 +62,11 @@ const SERVER_PORT = 8080;
 
 const useMessages = () => {
     const optiMessages = useContext(MessagesContext);
-    const addMessages = useContext(setMessagesContext);
+    const addOptiMessages = useContext(setMessagesContext);
 
     return {
         optiMessages,
-        addMessages,
+        addOptiMessages,
     };
 };
 

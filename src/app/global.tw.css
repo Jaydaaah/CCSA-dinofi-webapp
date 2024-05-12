@@ -9,6 +9,17 @@
     padding: 0;
 }
 
+.reactMarkDown a {
+    font-weight: 500;
+    color: darkblue;
+}
+
+.reactMarkDown a:hover {
+    font-weight: 400;
+    color: blue;
+}
+
+
 body {
 	font-family: 'Montserrat', sans-serif;
 	line-height: 1.6;
