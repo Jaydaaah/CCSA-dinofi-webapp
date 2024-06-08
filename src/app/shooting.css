@@ -1,0 +1,151 @@
+section.shooting {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: transparent;
+    background-size: cover;
+    animation: animateBg 10s linear infinite;
+    opacity: 0.8;
+    transition: all;
+    transition-duration: 200ms;
+    z-index: -10;
+
+    --animation-speed: 5
+}
+
+section.shooting-light {
+    filter: opacity(0.3);
+}
+
+@keyframes animateBg{
+    0%,100%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+}
+
+section.shooting span {
+    position: fixed;
+    top:50%;
+    left:50%;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.1),0 0 0 8px rgba(255,255,255,0.1),0 0 20px rgba(255,255,255,0.1);
+    animation: animate 3s linear infinite;
+    transition: inherit;
+    transition-duration: inherit;
+}
+
+section.shooting-light span {
+    background: #000;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.9),0 0 0 8px rgba(255,255,255,0.9),0 0 20px rgba(255,255,255,0.9);
+}
+
+section.shooting span::before{
+    content:'';
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(90deg, #fff,transparent);
+    transition: inherit;
+    transition-duration: inherit;
+}
+
+section.shooting-light span::before{
+    background: linear-gradient(90deg,#000,transparent);
+}
+@keyframes animate
+{
+    0%
+    {
+        transform: rotate(315deg) translateX(0);
+        opacity: 1;
+    }
+    70%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        transform: rotate(315deg) translateX(-1000px);
+        opacity: 0;
+    }
+}
+section.shooting span:nth-child(1) {
+    top: 0;
+    right: 0;
+    left: initial;
+    animation-delay: calc(0s * var(--animation-speed));
+    animation-duration: calc(1s * var(--animation-speed));
+}
+section.shooting span:nth-child(2) {
+    top: 0;
+    right: 80px;
+    left: initial;
+    animation-delay: calc(0.2s * var(--animation-speed));
+    animation-duration: calc(3s * var(--animation-speed));
+}
+section.shooting span:nth-child(3) {
+    top: 80;
+    right: 0px;
+    left: initial;
+    animation-delay: calc(0.4s * var(--animation-speed));
+    animation-duration: calc(2s * var(--animation-speed));
+}
+section.shooting span:nth-child(4) {
+    top: 0;
+    right: 180px;
+    left: initial;
+    animation-delay: calc(0.6s * var(--animation-speed));
+    animation-duration: calc(1.5s * var(--animation-speed));
+}
+section.shooting span:nth-child(5) {
+    top: 0;
+    right: 400px;
+    left: initial;
+    animation-delay: calc(0.8s * var(--animation-speed));
+    animation-duration: calc(2.5s * var(--animation-speed));
+}
+section.shooting span:nth-child(6) {
+    top: 0;
+    right: 600px;
+    left: initial;
+    animation-delay: calc(1s * var(--animation-speed));
+    animation-duration: calc(3s * var(--animation-speed));
+}
+section.shooting span:nth-child(7) {
+    top: 300px;
+    right: 0px;
+    left: initial;
+    animation-delay: calc(1.2s * var(--animation-speed));
+    animation-duration: calc(1.75s * var(--animation-speed));
+}
+section.shooting span:nth-child(8) {
+    top: 0px;
+    right: 700px;
+    left: initial;
+    animation-delay: calc(1.4s * var(--animation-speed));
+    animation-duration: calc(1.25s * var(--animation-speed));
+}
+section.shooting span:nth-child(9) {
+    top: 0px;
+    right: 1000px;
+    left: initial;
+    animation-delay: calc(0.75s * var(--animation-speed));
+    animation-duration: calc(2.25s * var(--animation-speed));
+}
+section.shooting span:nth-child(9) {
+    top: 0px;
+    right: 450px;
+    left: initial;
+    animation-delay: calc(2.75s * var(--animation-speed));
+    animation-duration: calc(2.75s * var(--animation-speed));
+}

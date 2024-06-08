@@ -1,36 +1,18 @@
 import { SendMsgStream } from "@/lib/api_calls";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { iteratorToStream } from "@/lib/fetch_tools";   
 import { NextRequest, NextResponse } from "next/server";
 
-function iteratorToStream(iterator: any) {
-    return new ReadableStream({
-        async pull(controller) {
-            const { value, done } = await iterator.next();
-
-            if (done) {
-                controller.close();
-            } else {
-                controller.enqueue(value);
-            }
-        },
-    });
-}
-
 interface reqbody {
+    chat_id: string
     prompt: string;
 }
 
 export async function POST(req: NextRequest) {
-    const { prompt }: reqbody = await req.json();
-    const user_id = req.cookies.get("user_id")?.value;
+    const { chat_id, prompt }: reqbody = await req.json();
 
-    if (user_id && prompt) {
-        const iterator = SendMsgStream(user_id, prompt);
-        try {
-            return new Response(iteratorToStream(iterator));
-        } finally {
-            revalidatePath("/chat-now");
-        }
+    if (chat_id && prompt && prompt != "") {
+        const iterator = SendMsgStream(chat_id, prompt);
+        return new Response(iteratorToStream(iterator));
     }
     return new NextResponse(new ReadableStream());
 }

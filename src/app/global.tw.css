@@ -2,43 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
-	box-sizing: border-box;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-.reactMarkDown a {
+.markdown a {
     font-weight: 500;
-    color: darkblue;
+    text-decoration: none;
 }
 
-.reactMarkDown a:hover {
+.markdown a:hover {
     font-weight: 400;
-    color: blue;
+    text-decoration: underline;
 }
 
+.markdown > * {
+    all: revert;
+}
 
 body {
-	font-family: 'Montserrat', sans-serif;
-	line-height: 1.6;
-	margin: 0;
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .animated-links {
     display: inline-block;
-    color: #000;
     text-decoration: none;
 }
 
 .animated-links::after {
-    content: '';
+    content: "";
     display: block;
     width: 0;
     height: 2px;
     background: #000;
-    transition: width .3s;
+    transition: width 0.3s;
+}
+
+.dark .animated-links::after {
+    background: #fff;
 }
 
 .animated-links:hover::after {
@@ -46,13 +51,46 @@ body {
 }
 
 .link-active::after {
-	width: 100%;
+    width: 100%;
 }
 
 .occupy-h {
-    height: calc(100vh - 68px);
+    height: calc(100vh - 153px);
 }
 
 .scroller-h {
     height: calc(100vh - 10rem);
 }
+
+.gradient-back {
+    background: rgb(230, 230, 250);
+    background: linear-gradient(
+        347deg,
+        rgba(230, 230, 250, 1) 0%,
+        rgba(255, 252, 244, 1) 100%
+    );
+}
+
+.header {
+	background-image: -webkit-linear-gradient(92deg, #f35626ff, #feab3aff);
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: hue 10s infinite linear;
+}
+
+@keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
+
+
+@keyframes blink { 50% { fill: transparent }}
+.loader circle { 
+  animation: 1s blink infinite;
+}
+.loader circle:nth-child(2) { animation-delay: 250ms }
+.loader circle:nth-child(3) { animation-delay: 500ms }
