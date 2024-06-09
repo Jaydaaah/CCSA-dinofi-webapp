@@ -31,10 +31,6 @@ export default function NicknameField() {
         []
     );
 
-    useEffect(() => {
-        router.prefetch("/chat");
-    }, []);
-
     return (
         <form
             className={`flex ${nickname ? "justify-end" : "justify-start"}`}

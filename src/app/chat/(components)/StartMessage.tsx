@@ -66,7 +66,7 @@ export default function StartMessage({ show }: Props) {
                                 duration: 1,
                             }}
                         >
-                            <StartConvoPrompt className="self-stretch py-9 mx-8" />
+                            <StartConvoPrompt placeholder="You can start by saying 'Hello'" className="self-stretch py-9 mx-8" />
                         </motion.div>
                     )}
                 </>

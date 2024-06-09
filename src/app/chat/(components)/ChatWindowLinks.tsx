@@ -1,5 +1,6 @@
 "use client";
 
+import { revalidateMe } from "@/actions/revalidateMeServerAction";
 import { Card, CardBody } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -31,7 +32,9 @@ export default function ChatWindowLinks({ chat_id, children }: Props) {
             }}
             className="my-1 mx-10"
         >
-            <Link href={`/chat/${chat_id}`}>
+            <Link href={`/chat/${chat_id}`} onClick={async () => {
+                await revalidateMe(`/chat/${chat_id}`);
+            }}>
                 <Card className="bg-opacity-30" shadow="sm">
                     <CardBody>{children}</CardBody>
                 </Card>

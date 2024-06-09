@@ -3,7 +3,6 @@ import { RetrieveMsg } from "@/lib/api_calls";
 import ChatFeed from "./(components)/ChatFeed";
 import { notFound } from "next/navigation";
 import ChatPromptArea from "./(components)/ChatPromptArea";
-import { cookies } from "next/headers";
 
 export default async function ChatPage({
     params,

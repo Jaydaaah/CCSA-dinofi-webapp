@@ -61,8 +61,8 @@ export default function DinofiAnimated() {
                     <Image
                         draggable={false}
                         src={DinoLogo.src}
-                        width={250}
-                        height={0}
+                        width={DinoLogo.width}
+                        height={DinoLogo.height}
                         priority={true}
                         className="w-[150px] md:w-[250px] h-auto m-14"
                         alt="text"

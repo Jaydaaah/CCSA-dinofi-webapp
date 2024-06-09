@@ -12,10 +12,11 @@ import { FiSend } from "react-icons/fi";
 
 interface Props {
     className?: string;
+    placeholder?: string;
     animation_delay?: number
 }
 
-export default function StartConvoPrompt({ className, animation_delay }: Props) {
+export default function StartConvoPrompt({ className, placeholder, animation_delay }: Props) {
     const [isLoading, setIsLoading] = useState(false);
     const [prompt, setPrompt] = useState("");
     const buttonRef = useRef<HTMLButtonElement>(null);
@@ -131,7 +132,7 @@ export default function StartConvoPrompt({ className, animation_delay }: Props) 
                     </div>
                 }
                 radius="sm"
-                placeholder="What can I help you with?"
+                placeholder={placeholder ?? "What can I help you with?"}
                 name="prompt"
                 minRows={prompt ? 3 : 1}
                 size="lg"

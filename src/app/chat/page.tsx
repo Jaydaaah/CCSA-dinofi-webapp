@@ -7,6 +7,7 @@ import ChatWindowLinks from "./(components)/ChatWindowLinks";
 import { v4 } from "uuid";
 import ChatWindowContainer from "./(components)/ChatWindowContainer";
 import StartConvoPrompt from "./(components)/StartConvoPrompt";
+import { cookies } from "next/headers";
 
 const sampleWindows = ["Hello World", "first introduction", "Nice 1"];
 
@@ -15,6 +16,10 @@ export default async function ChatPage() {
     const user = await getUserServerAction();
 
     if (!user) {
+        const cookie = cookies();
+        if (cookie.has("nickname")) {
+            cookie.delete("nickname");
+        }
         notFound();
     }
 

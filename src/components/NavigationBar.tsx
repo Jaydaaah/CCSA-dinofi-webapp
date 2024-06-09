@@ -2,6 +2,11 @@
 
 import {
     Avatar,
+    AvatarIcon,
+    Dropdown,
+    DropdownItem,
+    DropdownMenu,
+    DropdownTrigger,
     Navbar,
     NavbarBrand,
     NavbarContent,
@@ -22,6 +27,7 @@ import ccsalogo from "@/resources/ccsalogo.png";
 import { PiSunBold } from "react-icons/pi";
 import { IoIosMoon } from "react-icons/io";
 import { IoChevronBack } from "react-icons/io5";
+import { removeNicknameServerAction } from "@/actions/setNicknameServerAction";
 
 const navLinks = [
     { title: "Home", path: "/" },
@@ -101,7 +107,32 @@ export default function NavigationBar() {
                         defaultSelected={theme == "light"}
                     />
                 )}
-                <Avatar size="md" src={ccsalogo.src} className="p-[2px]"/>
+                {pathname == "/" ? (
+                    <Avatar size="md" src={ccsalogo.src} className="p-[2px]">
+                        <AvatarIcon/>
+                    </Avatar>
+                ) : (
+                    <Dropdown>
+                        <DropdownTrigger>
+                            <Avatar
+                                size="md"
+                                src={ccsalogo.src}
+                                className="p-[2px]"
+                            />
+                        </DropdownTrigger>
+                        <DropdownMenu>
+                            <DropdownItem
+                                className="text-justify"
+                                onClick={async () => {
+                                    await removeNicknameServerAction();
+                                    router.refresh();
+                                }}
+                            >
+                                Log Out
+                            </DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
+                )}
             </NavbarContent>
         </Navbar>
     );

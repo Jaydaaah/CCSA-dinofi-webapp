@@ -46,7 +46,7 @@ export default function DinofiBubble({ children, timestamp }: Props) {
                     height={40}
                 />
             </span>
-            <div className="shadow-small shadow-default-foreground bg-default-100 dark:bg-default-100 bg-opacity-50 rounded-xl py-1 px-3 ml-2 mb-2 max-w-[80%] min-w-[5%]">
+            <div className="shadow-small shadow-default-foreground bg-default-100 bg-opacity-50 rounded-xl py-1 px-3 ml-2 mb-2 max-w-[80%] min-w-[5%]">
                 {children}
             </div>
         </motion.section>

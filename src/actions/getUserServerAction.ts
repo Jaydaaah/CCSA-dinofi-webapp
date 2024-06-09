@@ -1,12 +1,13 @@
 "use server";
 
 import { Register } from "@/lib/api_calls";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
 export default async function getUserServerAction() {
     const nickname = cookies().get("nickname")?.value;
     if (!nickname) {
-        throw new Error("Error: no nickname provided");
+        return null;
     }
 
     const user_data = await Register(nickname);
